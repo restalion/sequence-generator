@@ -18,11 +18,9 @@ public class AlphanumericSequenceGenerator implements SequenceGenerator {
 	public List<String> generate(String initialValue, Integer numValues, Integer maxLength) {
 		List<String> values = new ArrayList<>();
 		Integer initialNumber = calculateInitialNumber(initialValue);
-		System.out.println("Initial code: " + generateCode(initialNumber));
 		
 		for (int i = initialNumber; i < numValues + initialNumber; i++) {
 			String generated = generateCode(i);
-			System.out.println("Generated: " + generated);
 			if (generated.length() <= maxLength) 
 				values.add(generateCode(i));
 		}
@@ -49,15 +47,11 @@ public class AlphanumericSequenceGenerator implements SequenceGenerator {
 		
 		Integer number = 0;
 		String reverse = new StringBuilder(initialValue).reverse().toString();
-		System.out.println(reverse);
 		
 		for (int i = 0; i < reverse.length(); i++) {
-			System.out.println(VALUES.length() ^ (i));
 			number += VALUES.indexOf(reverse.charAt(i)) * (int) Math.pow(VALUES.length(), i);
 
 		}
-		
-		System.out.println("number " + number);
 		
 		return number;
 	}
